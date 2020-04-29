@@ -19,7 +19,7 @@ module.exports = {
   },
 
   htmlPluginConfig: (template) => ({
-    title: 'GitHub App',
+    title: 'Markdown Editor',
     template: join(paths.src, 'html', template),
   }),
 

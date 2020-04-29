@@ -1,4 +1,4 @@
-# React-Ninja_Boilerplate-React
+# React Ninja - Markdown Editor
 
 ### To install dependencies:
 ```sh
