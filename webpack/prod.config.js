@@ -38,11 +38,11 @@ module.exports = {
       name: 'react-build',
       chunks: ['main'],
       minChunks: ({ resource }) => (
-        /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
+        /node_modules\/react|react-dom|fbjs\//.test(resource)
       )
     }),
 
-    new webpack.optimize.CommonsChunckPlugin({
+    new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       chunks: ['main'],
       minChunks: ({ resource }) => (
@@ -52,7 +52,7 @@ module.exports = {
 
     new HtmlPlugin(Object.assign({}, common.htmlPluginConfig('template.html'), {
       minify: { collapseWhitespace: true },
-      chunkSortMode: (chunk1, chunk2) => {
+      chunksSortMode: (chunk1, chunk2) => {
         const order = ['react-build', 'vendor', 'main']
         const left = order.indexOf(chunk1.names[0])
         const right = order.indexOf(chunk2.names[0])
@@ -62,8 +62,7 @@ module.exports = {
 
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true
-    }),
-
+    })
   ].concat(
     process.env.ANALYZER ? new BundleAnalyzerPlugin() : []
   ),
@@ -76,17 +75,17 @@ module.exports = {
       common.urlLoader,
       {
         test: /\.css$/,
-        exclude: /node_modules|(search|style)\.css/,
-        include: /src/,
+        exclude: /node_modules|(style)\.css/,
+        include: common.cssLoader.include,
         use: styles.extract({
           fallback: common.cssLoader.use[0],
           use: common.cssLoader.use.slice(1)
         })
       },
       {
-        test: /(search|style)\.css$/,
+        test: /(style)\.css$/,
         exclude: /node_modules/,
-        include: /src/,
+        include: common.cssLoader.include,
         use: crp.extract({
           fallback: common.cssLoader.use[0],
           use: common.cssLoader.use.slice(1)

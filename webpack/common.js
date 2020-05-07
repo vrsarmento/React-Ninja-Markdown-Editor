@@ -28,8 +28,8 @@ module.exports = {
   }),
 
   standardPreLoader: {
-    test: /\.js$/,
     enforce: 'pre',
+    test: /\.js$/,
     include: paths.src,
     use: {
       loader: 'standard-loader',
@@ -42,7 +42,7 @@ module.exports = {
   jsLoader: {
     test: /\.js$/,
     include: paths.src,
-    use: 'babel-loader',
+    use: 'babel-loader'
   },
 
   cssLoader: {
@@ -60,7 +60,7 @@ module.exports = {
     include: paths.src,
     use: {
       loader: 'file-loader',
-      query: {
+      options: {
         name: 'media/[name].[hash:8].[ext]',
       },
     },
@@ -71,7 +71,7 @@ module.exports = {
     include: paths.src,
     use: {
       loader: 'url-loader',
-      query: {
+      options: {
         limit: 10000,
         name: 'media/[name].[hash:8].[ext]',
       },
