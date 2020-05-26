@@ -21,27 +21,44 @@ body {
 
 .editor {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
 }
 
-form {
+.editor-header {
+  background: #222;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 40px;
+}
+
+.editor-header .save {
+  border: 0;
+  background: #154b15;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.editor-header .save:hover {
+  background: #0a310a;
 }
 
 textarea,
 .view {
   min-width: 50%;
   max-width: 50%;
+  height: 100%;
 }
 
 textarea {
-  border: 8px solid #fc0;
   font-size: 18px;
   padding: 10px;
   resize: none;
-  width: 100%;
 }
 
 textarea:focus {
@@ -49,6 +66,7 @@ textarea:focus {
 }
 
 .view {
+  font-family: sans-serif;
   background: #333;
   color: #fff;
   padding: 10px;
