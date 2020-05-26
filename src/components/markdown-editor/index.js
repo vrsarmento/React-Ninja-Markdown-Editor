@@ -7,7 +7,7 @@ import './styles.css'
 
 const MarkdownEditor = ({ value, handleChange, handleSave, getMarkup }) => (
   <section className='editor'>
-    <Header handleSave={handleSave}/>
+    <Header handleSave={handleSave} />
     <textarea value={value} onChange={handleChange} autoFocus />
     <article className='view' dangerouslySetInnerHTML={getMarkup()} />
   </section>
