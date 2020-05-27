@@ -18,18 +18,31 @@
   height: 40px;
 }
 
-.editor-header .save {
+.editor-header button {
   border: 0;
-  background: #154b15;
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
   padding: 0 20px;
+  margin-left: 20px; 
   cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.editor-header .save {
+  background: #154b15;
 }
 
 .editor-header .save:hover {
   background: #0a310a;
+}
+
+.editor-header .remove {
+  background: #750e0e;
+}
+
+.editor-header .remove:hover {
+  background: #490909;
 }
 
 .editor-header .save-message {
@@ -37,14 +50,13 @@
   align-items: center;
   font-size: 13px;
   color: #fff;
-  padding: 0 20px;
 }
 
 textarea,
 .view {
   min-width: 50%;
   max-width: 50%;
-  height: 100%;
+  height: calc(100% - 40px);
 }
 
 textarea {
@@ -62,5 +74,6 @@ textarea:focus {
   background: #333;
   color: #fff;
   padding: 10px;
+  overflow: auto;
 }
 
