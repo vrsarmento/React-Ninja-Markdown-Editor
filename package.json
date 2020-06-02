@@ -50,6 +50,7 @@
     "fbjs": "0.8.12",
     "highlight.js": "9.10.0",
     "marked": "0.3.6",
+    "node-uuid": "1.4.8",
     "normalize.css": "^8.0.1",
     "preact": "7.2.1",
     "preact-compat": "3.14.3",
