@@ -22,7 +22,7 @@ class App extends Component {
     super()
     this.state = {
       value: '',
-      isSaving: false
+      isSaving: null
     }
 
     this.handleChange = (e) => {
@@ -39,7 +39,7 @@ class App extends Component {
 
     this.handleRemove = () => {
       localStorage.removeItem('md')
-      this.setState({ value: '' })
+      this.setState({ value: '', isSaving: null })
     }
 
     this.handleSave = () => {

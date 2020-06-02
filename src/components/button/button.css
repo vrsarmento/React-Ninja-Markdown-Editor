@@ -1,0 +1,35 @@
+.button {
+  border: 0;
+  color: #fff;
+  background: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 20px;
+  margin-left: 20px; 
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.button.-success {
+  background: #154b15;
+}
+
+.button.-success:hover {
+  background: #0a310a;
+}
+
+.button.-danger {
+  background: #750e0e;
+}
+
+.button.-danger:hover {
+  background: #490909;
+}
+
+.button.-info {
+  background: #113e68;
+}
+
+.button.-info:hover {
+  background: #062c5f;
+}
