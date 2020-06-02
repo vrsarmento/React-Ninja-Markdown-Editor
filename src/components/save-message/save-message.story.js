@@ -20,6 +20,6 @@ stories.add('SaveMessage with isSaving === false', () => (
 
 stories.add('SaveMessage with isSaving === true', () => (
   <div>
-    Message: <SaveMessage isSaving={true} />
+    Message: <SaveMessage isSaving />
   </div>
 ))
