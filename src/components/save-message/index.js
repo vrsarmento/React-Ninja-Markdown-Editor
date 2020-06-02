@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react'
 
 const SaveMessage = ({ isSaving }) => (
-  isSaving !== null && (
+  isSaving !== null && isSaving !== undefined && (
     <span className='save-message'>
       {isSaving ? 'Salvando...' : 'Salvo!'}
     </span>
