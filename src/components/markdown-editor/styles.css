@@ -45,6 +45,14 @@
   background: #490909;
 }
 
+.editor-header .create {
+  background: #113e68;
+}
+
+.editor-header .create:hover {
+  background: #062c5f;
+}
+
 .editor-header .save-message {
   display: flex;
   align-items: center;

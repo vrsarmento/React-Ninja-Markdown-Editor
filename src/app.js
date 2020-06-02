@@ -32,11 +32,9 @@ class App extends Component {
       })
     }
 
-    this.handleSave = () => {
-      if (this.state.isSaving) {
-        localStorage.setItem('md', this.state.value)
-        this.setState({ isSaving: false })
-      }
+    this.handleCreate = () => {
+      this.setState({ value: '' })
+      this.textarea.focus()
     }
 
     this.handleRemove = () => {
@@ -44,8 +42,19 @@ class App extends Component {
       this.setState({ value: '' })
     }
 
+    this.handleSave = () => {
+      if (this.state.isSaving) {
+        localStorage.setItem('md', this.state.value)
+        this.setState({ isSaving: false })
+      }
+    }
+
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
+    }
+
+    this.textareaRef = (node) => {
+      this.textarea = node
     }
   }
 
@@ -71,7 +80,9 @@ class App extends Component {
         handleChange={this.handleChange}
         handleSave={this.handleSave}
         handleRemove={this.handleRemove}
+        handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
+        textareaRef={this.textareaRef}
       />
     )
   }
