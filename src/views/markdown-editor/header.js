@@ -7,10 +7,12 @@ import SaveMessage from 'components/save-message'
 
 const MarkdownEditorHeader = ({ title, handleRemove, handleCreate, handleChange, isSaving }) => (
   <header className='editor-header'>
-    <input type='text' value={title} placeholder='Sem título' onChange={handleChange('title')} />
+    <input type='text' value={title} placeholder='Sem título' onChange={handleChange('title')} className='titleInput' />
     <SaveMessage isSaving={isSaving} />
-    <Button onClick={handleCreate} kind='info'>Criar novo</Button>
-    <Button onClick={handleRemove} kind='danger'>Apagar</Button>
+    <div className='actions-container'>
+      <Button onClick={handleCreate} kind='info'>Criar novo</Button>
+      <Button onClick={handleRemove} kind='danger'>Apagar</Button>
+    </div>
   </header>
 )
 
