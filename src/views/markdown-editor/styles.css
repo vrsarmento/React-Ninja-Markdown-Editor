@@ -27,8 +27,8 @@
 
 textarea,
 .view {
-  min-width: 50%;
-  max-width: 50%;
+  min-width: 40%;
+  max-width: 40%;
   height: calc(100% - 40px);
 }
 
@@ -50,3 +50,18 @@ textarea:focus {
   overflow: auto;
 }
 
+.files-list-container {
+  min-width: 20%;
+  max-width: 20%;
+  background: #fce562;
+}
+
+.files-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 5px;
+}
+
+.files-list-container li {
+  margin-bottom: 5px;
+}

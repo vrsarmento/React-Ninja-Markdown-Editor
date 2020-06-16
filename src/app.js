@@ -29,7 +29,8 @@ class App extends Component {
     })
 
     this.state = {
-      ...this.clearState()
+      ...this.clearState(),
+      files: {}
     }
 
     this.handleChange = (e) => {
@@ -50,13 +51,34 @@ class App extends Component {
 
     this.handleRemove = () => {
       localStorage.removeItem(this.state.id)
+      // eslint-disable-next-line no-unused-vars
+      // const { [this.state.id]: id, ...files } = this.state.files
+
+      // outra forma de excluir um item de um array:
+      let files = Object.keys(this.state.files).reduce((acc, fileId) => {
+        return fileId === this.state.id ? acc : {
+          ...acc,
+          [fileId]: this.state.files[fileId]
+        }
+      }, {})
+      this.setState({ files })
       this.createNew()
     }
 
     this.handleSave = () => {
       if (this.state.isSaving) {
-        localStorage.setItem(this.state.id, this.state.value)
-        this.setState({ isSaving: false })
+        const newFile = {
+          title: 'Sem titulo',
+          content: this.state.value
+        }
+        localStorage.setItem(this.state.id, JSON.stringify(newFile))
+        this.setState({
+          isSaving: false,
+          files: {
+            ...this.state.files,
+            [this.state.id]: newFile
+          }
+        })
       }
     }
 
@@ -67,11 +89,23 @@ class App extends Component {
     this.textareaRef = (node) => {
       this.textarea = node
     }
+
+    this.handleOpenFile = (fileId) => () => {
+      this.setState({
+        value: this.state.files[fileId].content,
+        id: fileId
+      })
+    }
   }
 
   componentDidMount () {
-    const value = localStorage.getItem('md')
-    this.setState({ value: value || '' })
+    const files = Object.keys(localStorage)
+    this.setState({
+      files: files.reduce((acc, fileId) => ({
+        ...acc,
+        [fileId]: JSON.parse(localStorage.getItem(fileId))
+      }), {})
+    })
   }
 
   componentDidUpdate () {
@@ -94,6 +128,8 @@ class App extends Component {
         handleCreate={this.handleCreate}
         getMarkup={this.getMarkup}
         textareaRef={this.textareaRef}
+        files={this.state.files}
+        handleOpenFile={this.handleOpenFile}
       />
     )
   }
